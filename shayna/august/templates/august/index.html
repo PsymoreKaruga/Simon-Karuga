@@ -1,0 +1,1122 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Simon Karuga Web Developer</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EasyFolio
+  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
+  * Updated: Feb 11 2025 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Simon Karuga</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center content">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h2>Delivering High-Quality Digital Solutions</h2>
+            <p class="lead">Transforming visionary concepts into sophisticated, user-centric digital experiences through expert design and cutting-edge development.</p>
+            <p class="lead">Partner with us to elevate your digital presence and achieve your business goals.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+              <a href="#portfolio" class="btn btn-primary">View My Work</a>
+              <a href="#contact" class="btn btn-outline">Let's Connect</a>
+            </div>
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+              <div class="stat-item">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-image">
+              <img src="{% static 'assets/img/profile-transparent.webp' %}" alt="Portfolio Hero Image" class="img-fluid" data-aos="zoom-out" data-aos-delay="300">
+              <div class="shape-1"></div>
+              <div class="shape-2"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section light-background">
+
+      
+
+      <!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2 data-aos="fade-down" data-aos-duration="1000">About</h2>
+  
+  <div class="title-shape" data-aos="zoom-in" data-aos-duration="1000">
+    <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+    </svg>
+  </div>
+
+  <!-- Lottie Animation -->
+  <div class="lottie-container" data-aos="fade-up" data-aos-delay="500">
+    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json"  
+      background="transparent"  
+      speed="1"  
+      style="width: 300px; height: 300px; margin: auto;"  
+      loop autoplay>
+    </lottie-player>
+  </div>
+
+  <p data-aos="fade-right" data-aos-duration="1000">
+    I am <strong>Simon Karuga</strong>, a skilled <strong>Python Django Web Developer</strong> passionate about building dynamic, scalable, and high-performance web applications. With <strong>3+ years</strong> of experience, I specialize in developing secure and efficient backend solutions, seamless user experiences, and database-driven applications that empower businesses to thrive in the digital world.
+  </p>
+  
+  <p data-aos="fade-left" data-aos-duration="1000">
+    Throughout my career, I have successfully delivered <strong>50+ projects</strong> and collaborated with <strong>25+ happy clients</strong>, providing tailored solutions that align with their goals. My expertise lies in leveraging the power of Django to create innovative and feature-rich web platforms that are both functional and visually appealing.
+  </p>
+
+  <p data-aos="fade-up" data-aos-duration="1000">
+    <strong>What I Do:</strong><br>
+    ✔ <strong>Django Web Development</strong> – Crafting scalable and secure web applications<br>
+    ✔ <strong>API Development</strong> – Building RESTful APIs for seamless integrations<br>
+    ✔ <strong>Database Management</strong> – Designing and optimizing databases for efficiency<br>
+    ✔ <strong>Frontend Integration</strong> – Implementing responsive and interactive UI<br>
+    ✔ <strong>Deployment & Maintenance</strong> – Ensuring long-term stability and performance  
+  </p>
+
+  <p data-aos="fade-up" data-aos-delay="500">
+    Let's collaborate to bring your ideas to life with cutting-edge web solutions! 🚀
+  </p>
+</div>
+<!-- End Section Title -->
+
+<!-- AOS & Lottie Animation Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<style>
+  .lottie-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+</style>
+
+
+
+
+
+
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6 position-relative" data-aos="fade-right" data-aos-delay="200">
+            <div class="about-image">
+              <img src="{% static 'assets/img/profile.webp' %}" alt="Profile Image" class="img-fluid rounded-4">
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="about-content">
+              <span class="subtitle">About Me</span>
+
+              <h2>Python Django Web Developer</h2>
+              <p class="lead mb-4">
+                Am passionate and highly skilled <strong>Python Django Web Developer</strong> specializing in building secure, scalable, and high-performance web applications. With over <strong>3+ years</strong> of experience, I have successfully designed, developed, and deployed robust backend solutions that power dynamic websites and applications.
+              </p>
+
+              <p class="mb-4">
+                My expertise lies in leveraging <strong>Django</strong> to create efficient, database-driven applications with seamless API integrations and intuitive user experiences. I am committed to writing clean, maintainable code and optimizing system performance to ensure the best digital solutions for businesses.
+              </p>
+              <p class="mb-4">
+                Whether it's developing <strong>custom web applications, API-driven platforms, or full-stack solutions</strong>, delivering high-quality, tailored solutions is always the priority. Let’s collaborate and build something exceptional together!
+              </p>
+  
+              
+              
+
+              <div class="personal-info">
+                <div class="row g-4">
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Name</span>
+                      <span class="value">Simon Karuga</span>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Phone</span>
+                      <span class="value">+254 790 776 945</span>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Age</span>
+                      <span class="value">25 Years</span>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Email</span>
+                      <span class="value">simonkaruga945@gmail.com</span>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Occupation</span>
+                      <span class="value">Software Developer </span>
+                      <span class="value">Online Entrepreneur </span>
+
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="info-item">
+                      <span class="label">Nationality</span>
+                      <span class="value">Kenyan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="signature mt-4">
+                <div class="signature-image">
+                  <img src="{% static 'assets/img/signature.webp' %}" alt="" class="img-fluid">
+                </div>
+                <div class="signature-info">
+                  <h4>Simon Karuga</h4>
+                  <p>Crafting Code, Building Solutions</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    
+
+<!-- Skills Section -->
+
+
+
+<!-- Skills Section -->
+<section id="skills" class="skills section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 skills-animation">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-box">
+          <h3>HTML & CSS</h3>
+          <p>Expert in crafting responsive, pixel-perfect front-end designs using HTML5 and CSS3 to deliver seamless user experiences across devices.</p>
+          <span class="text-end d-block">90%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-box">
+          <h3>PostgreSQL & MongoDB</h3>
+          <p>Skilled in designing and optimizing robust databases with PostgreSQL and MongoDB for scalable, high-performance web applications.</p>
+          <span class="text-end d-block">80%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-box">
+          <h3>JavaScript</h3>
+          <p>Proficient in building dynamic, interactive features with JavaScript to enhance functionality and user engagement on modern websites.</p>
+          <span class="text-end d-block">80%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-box">
+          <h3>Python Django</h3>
+          <p>Specialized in developing secure, scalable web solutions with Python and Django, delivering tailored backend systems for businesses.</p>
+          <span class="text-end d-block">90%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="skill-box">
+          <h3> Graphic Design (Photoshop & Canva)</h3>
+          <p>Adept at creating visually appealing graphics and mockups using Photoshop and Canva to support web design and branding projects.</p>
+          <span class="text-end d-block">55%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Skills Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+        <p>
+          Explore the professional journey of a Web Developer with 3+ years of experience, dedicated to crafting secure and scalable web solutions for dynamic, high-performance applications.
+          
+        </p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="resume-wrapper">
+              <div class="resume-block" data-aos="fade-up">
+                <h2>Work Experience</h2>
+                <p class="lead">
+                  Proven expertise in delivering innovative solutions, consistently driving operational excellence, and advancing organizational objectives through strategic insight and meticulous execution.
+
+                </p>
+              
+                  
+                <div class="timeline">
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-left">
+                     
+
+                      <h4 class="company">Jadespay Payment Gateway</h4>
+                      <span class="period">June 2024 – Present</span>
+
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Project Lead</h3>
+                      <p class="description">
+                        Directing cutting-edge payment solutions with a focus on seamless integration and client satisfaction. I oversee cross-functional teams to design and implement scalable systems, enhancing transaction efficiency and security for a rapidly growing fintech platform.
+                      </p>
+                      </div>
+                  </div>
+
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-left">
+                      <h4 class="company">Awasam Online Experts</h4>
+                      <span class="period">2023</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Senior graphic design specialist</h3>
+                      <p class="description">Transformed visual storytelling for clients by crafting compelling designs that elevate brand identity and engagement.</p>
+                      
+                      <ul>
+                        <li>Led the design, development, and execution of high-impact graphic layouts and production materials.</li>
+                        <li>Mentored a team of seven designers, guiding creative direction and ensuring project alignment with client goals.</li>
+                        <li>Conducted rigorous quality assessments to guarantee precision and excellence in all deliverables.</li>
+                        <li>Managed production budgets ranging from $2,000 to $25,000, optimizing resources for maximum ROI.</li>
+                      </ul>
+                      <p><strong>Technologies:</strong> Adobe Creative Suite, Sketch, InVision, UXPin, HTML, CSS, JavaScript</p>
+                      
+                     
+                    </div>
+                  </div>
+
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-left">
+                      <h4 class="company">Peli and Sons Building and Construction Ltd .</h4>
+                      <span class="period">2022-2023</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Social Media Manager</h3>
+                      <p class="description">Amplified brand visibility and engagement through strategic social media campaigns, driving audience growth and fostering meaningful connections for a construction industry leader.</p>
+
+                      <ul>
+                        <li>Developed and implemented social media strategies to increase brand awareness and engagement</li>
+                        <li>Managed a team of 5 social media specialists to create and publish content</li>
+                        <li>Monitored social media analytics to track performance and optimize campaigns</li>
+                        <li>Collaborated with marketing and design teams to create compelling visual content</li>
+                    </div>
+                  </div>
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-left">
+                      <h4 class="company">Jades Motors</h4>
+                      <span class="period">2022 – Present</span>
+                      
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Marketing and Brand Ambassador</h3>
+                      <p class="description">Elevated brand presence in the automotive sector by designing innovative marketing strategies and representing the company as a charismatic ambassador, cultivating trust and loyalty among clients.</p>
+    
+                      
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+                
+              
+
+              
+          
+          
+
+
+
+
+              <div class="resume-block" data-aos="fade-up" data-aos-delay="100">
+                <h2>My Education</h2>
+                <p class="lead">A robust academic foundation complemented by specialized training, equipping me with the skills to innovate, design, and deliver impactful solutions in technology and creative industries.</p>
+
+                
+                <div class="timeline">
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-left">
+                      <h4 class="company">Flatiron School</h4>
+                      <span class="period">2023-2024</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">UX/UI Product Design</h3>
+                      <p class="description">Mastered the art of user-centered design, blending aesthetics with functionality to create intuitive, visually stunning digital experiences that enhance user satisfaction and engagement.</p>
+                      
+                    </div>
+                  </div>
+
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-left">
+                      <h4 class="company">freeCodeCamp</h4>
+                      <span class="period">2022 - 2024</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Python & Django Development</h3>
+                      <p class="description">Developed advanced proficiency in Python and Django, building robust, scalable web applications with a focus on clean code, efficient workflows, and dynamic functionality.</p>
+                      
+                    </div>
+                  </div>
+
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-left">
+                      <h4 class="company">Kirinyaga University</h4>
+                      <span class="period">2020-2024</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Bachelor of Business Information Technology &amp; Graphic Design</h3>
+                      <p class="description">Acquired a versatile skill set at the intersection of technology and creativity, mastering business IT strategies alongside graphic design principles to drive innovative, client-focused solutions.</p>
+                      <ul>
+                        <li>Acquired strong knowledge in <strong>database management, software development, and cloud computing</strong>.</li>
+                        <li>Developed and executed <strong>branding strategies and digital marketing campaigns</strong>.</li>
+                        <li>Worked on <strong>real-world projects</strong>, applying business intelligence and software solutions.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Resume Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+        <p>Explore my portfolio of innovative web development projects, expertly crafted with Python Django for secure, scalable client solutions.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <div class="portfolio-filters-container" data-aos="fade-up" data-aos-delay="200">
+            <ul class="portfolio-filters isotope-filters">
+              <li data-filter="*" class="filter-active">All Work</li>
+              <li data-filter=".filter-web">Web Design</li>
+              <li data-filter=".filter-graphics">Graphics</li>
+              <li data-filter=".filter-motion">Motion</li>
+              <li data-filter=".filter-brand">Branding</li>
+            </ul>
+          </div>
+
+          <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/app-1.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/app-1.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-web"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Web Design</span>
+                  <h3>Modern Dashboard Interface</h3>
+                  <p>A sleek, responsive dashboard built with Django, optimizing user workflows and data visualization.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-graphics">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/product-1.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/product-1.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-graphics"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Graphics</span>
+                  <h3>Creative Brand Identity</h3>
+                  <p>Stunning visual designs crafted to elevate brand presence and captivate target audiences.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-motion">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-motion"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Motion</span>
+                  <h3>Product Animation Reel</h3>
+                  <p>Dynamic motion graphics showcasing products with smooth, engaging animations for maximum impact.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-brand">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/books-1.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/books-1.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-brand"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Branding</span>
+                  <h3>Luxury Brand Package</h3>
+                  <p>Elegant branding solutions designed to reflect sophistication and drive business recognition.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/app-2.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/app-2.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-web"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Web Design</span>
+                  <h3>E-commerce Platform</h3>
+                  <p>A robust Django-powered e-commerce site, delivering seamless shopping experiences and scalability.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-graphics">
+              <div class="portfolio-card">
+                <div class="portfolio-image">
+                  <img src="{% static 'assets/img/portfolio/product-2.jpg' %}" class="img-fluid" alt="" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-actions">
+                      <a href="{% static 'assets/img/portfolio/product-2.jpg' %}" class="glightbox preview-link" data-gallery="portfolio-gallery-graphics"><i class="bi bi-eye"></i></a>
+                      <a href="{% url 'portfoliodetails' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-content">
+                  <span class="category">Graphics</span>
+                  <h3>Digital Art Collection</h3>
+                  <p>Vivid digital artwork blending creativity and precision for impactful visual storytelling.</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 class="glowing-text zoom-text">Testimonials</h2>
+
+        <style>
+         
+          .zoom-text {
+            animation: zoom 1.5s infinite alternate;
+          }
+
+          @keyframes zoom {
+            from {
+              transform: scale(3);
+            }
+            to {
+              transform: scale(1.1);
+            }
+          }
+        </style>
+
+       
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+        <p>Hear from clients about my exceptional web development skills, delivering innovative Django solutions with precision and creativity.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="testimonials-slider swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "slidesPerView": 1,
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              }
+            }
+          </script>
+
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h2>Unmatched Web Expertise</h2>
+                <p>
+                  Simon transformed our business with a secure, scalable Django platform, exceeding expectations with flawless execution.
+                </p>
+                <p>
+                  His deep knowledge of web development and creative problem-solving made our project a standout success. Highly recommended!
+                </p>
+                    
+                    <div class="profile d-flex align-items-center">
+                      <img src="{% static 'assets/img/testimonials/testimonials-7.webp' %}" class="profile-img" alt="">
+                      <div class="profile-info">
+                        <h3>Ismael Jimenez</h3>
+                        <span>Client</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 d-none d-lg-block">
+                    <div class="featured-img-wrapper">
+                      <img src="{% static 'assets/img/testimonials/testimonials-7.webp' %}" class="featured-img" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Testimonial Item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h2>Creative Design Genius</h2>
+                    <p>
+                      Simon’s Django-powered site brought our vision to life with stunning design and seamless functionality.
+                    </p>
+                    <p>
+                      His attention to detail and innovative approach elevated our brand, delivering a top-tier user experience.
+                    </p>
+                    
+                    <div class="profile d-flex align-items-center">
+                      <img src="{% static 'assets/img/testimonials/testimonials-8.webp' %}" class="profile-img" alt="">
+                      <div class="profile-info">
+                        <h3>Victoria  Hores</h3>
+
+                       
+                        <span>Designer</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 d-none d-lg-block">
+                    <div class="featured-img-wrapper">
+                      <img src="{% static 'assets/img/testimonials/testimonials-8.webp' %}" class="featured-img" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Testimonial Item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h2>Reliable Development Partner</h2>
+                <p>
+                  Simon’s expertise in Python Django turned our complex requirements into a robust, efficient web solution.
+                </p>
+                <p>
+                  His professionalism and creative flair made collaboration a breeze, delivering results that drive our growth.
+                </p>
+                    
+                    <div class="profile d-flex align-items-center">
+                      <img src="{% static 'assets/img/testimonials/testimonials-9.webp' %}" class="profile-img" alt="">
+                      <div class="profile-info">
+                        <h3>Andrea Villegas</h3>
+                        <span>Freelancer</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 d-none d-lg-block">
+                    <div class="featured-img-wrapper">
+                      <img src="{% static 'assets/img/testimonials/testimonials-9.webp' %}" class="featured-img" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Testimonial Item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h2>E-commerce Excellence</h2>
+                    <p>
+                      Simon built our online store with Django, blending scalability and style for a flawless shopping experience.
+                    </p>
+                    <p>
+                      His technical mastery and client-focused creativity boosted our sales and customer satisfaction significantly.
+                    </p>
+                   
+
+                    
+                    <div class="profile d-flex align-items-center">
+                      <img src="{% static 'assets/img/testimonials/testimonials-10.webp' %}" class="profile-img" alt="">
+                      <div class="profile-info">
+                        <h3>Anesia Brown</h3>
+                        <span>Store Owner</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 d-none d-lg-block">
+                    <div class="featured-img-wrapper">
+                      <img src="{% static 'assets/img/testimonials/testimonials-10.webp' %}" class="featured-img" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Testimonial Item -->
+
+          </div>
+
+          <div class="swiper-navigation w-100 d-flex align-items-center justify-content-center">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    
+
+
+
+   <!-- Services Section -->
+    <section id="services" class="services section">
+
+   <!-- Section Title -->
+   <div class="container section-title" data-aos="fade-up">
+    <h2 class="glowing-text zoom-text">What I Offer</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+    <p>Bringing ideas to life through secure, scalable, and high-performance web development—built with clean code, Django excellence, and a focus on results.</p>
+   </div><!-- End Section Title -->
+
+   <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h2 class="fw-bold mb-4 services-title">Building Modern Web Solutions That Work</h2>
+        <p class="mb-4">With over 3 years of experience, I deliver clean, efficient, and scalable code for businesses and startups—helping them grow through tailored web solutions built with Django and modern frontend tools.</p>
+        <a href="#contact" class="btn btn-outline-primary">Let's Work Together</a>
+      </div>
+      <div class="col-lg-8">
+        <div class="row g-4">
+
+          <!-- Service Item -->
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item">
+              <i class="bi bi-code-slash icon"></i>
+              <h3><a href="{% url 'servicedetails' %}">Custom Web Development</a></h3>
+              <p>Designing and developing fully custom Django-based web applications with clean architecture, intuitive UI, and excellent performance.</p>
+            </div>
+          </div>
+
+          <!-- Service Item -->
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item">
+              <i class="bi bi-shield-lock icon"></i>
+              <h3><a href="{% url 'servicedetails' %}">Secure Backend Systems</a></h3>
+              <p>Developing highly secure, role-based backends using Django’s authentication and permissions, ensuring user data is always protected.</p>
+            </div>
+          </div>
+
+          <!-- Service Item -->
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item">
+              <i class="bi bi-diagram-3 icon"></i>
+              <h3><a href="{% url 'servicedetails' %}">RESTful API Development</a></h3>
+              <p>Creating powerful Django REST APIs for frontend/backend separation, mobile app integration, or third-party services like MPesa or Stripe.</p>
+            </div>
+          </div>
+
+          <!-- Service Item -->
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item">
+              <i class="bi bi-rocket-takeoff icon"></i>
+              <h3><a href="{% url 'servicedetails' %}">Deployment & Optimization</a></h3>
+              <p>Deploying Django applications on platforms like Heroku, DigitalOcean, or VPS with performance optimization, HTTPS, and CI/CD setup.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+   </div>
+
+    </section><!-- /Services Section -->
+ 
+
+    
+
+         <section id="faq" class="faq section">
+  <div class="container section-title" data-aos="fade-up">
+    <li class="glowing-text zoom-text"><a href="{% url 'faq_section' %}"> Frequently Asked Questions</a></li>
+
+    
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20"><path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </div>
+    <p>Here are some common questions and detailed answers to help you better understand my services and technical capabilities.</p>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-container">
+          {% for faq in faqs %}
+          <div class="faq-item">
+            <h3 class="faq-question">{{ faq.question }}</h3>
+            <div class="faq-content">
+              <p>{{ faq.answer }}</p>
+            </div>
+            <i class="faq-toggle bi bi-chevron-down"></i>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <div class="content" data-aos="fade-up" data-aos-delay="200">
+              <div class="section-category mb-3">Get In Touch</div>
+              <h2 class="display-5 mb-4"> Let's Connect </h2>
+              
+               <p class="lead mb-4">
+            I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out and let's make something great together.
+              </p>
+              <div class="contact-info mt-5">
+                <div class="info-item d-flex mb-3">
+                  <i class="bi bi-envelope-at me-3"></i>
+                  <span>simonkaruga945@gmail.com</span>
+                </div>
+
+                <div class="info-item d-flex mb-3">
+                  <i class="bi bi-telephone me-3"></i>
+                  <span>+254 790 776 945</span>
+                </div>
+
+                <div class="info-item d-flex mb-4">
+                  <i class="bi bi-geo-alt me-3"></i>
+                  <span>PR79+HF5, Kenyatta Ave, Nairobi</span>
+                </div>
+
+                <a href="https://www.google.com/maps?q=PR79+HF5,+Kenyatta+Avenue,+Nairobi" class="map-link d-inline-flex align-items-center" target="_blank" rel="noopener">
+
+                  Open Map
+                  <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
+              <div class="card-body p-4 p-lg-5">
+
+                <form action="{% url 'contact' %}" method="post" class="php-email-form">
+                  {% csrf_token %}
+                  {{ form|crispy }}
+                    <div class="col-12 text-center">
+                        <div class="loading">Loading</div>
+                             <div class="error-message"></div>
+                                     <div class="sent-message">Your message has been sent. Thank you!</div>
+                                          <button type="submit" class="btn btn-submit w-100">Submit Message</button>
+                                        </div>
+               </form>
+
+                
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>2025© <span>Copyright</span> <strong class="px-1 sitename">Simon Karuga</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
+
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">Jades.com</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+ 
+
+</body>
+
+</html>
