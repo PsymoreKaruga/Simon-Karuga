@@ -1,5 +1,5 @@
-
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,9 +7,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Service Details - EasyFolio Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Service Details - Simon Karuga</title>
+  <meta name="description" content="Detailed information about Simon Karuga's professional web development services.">
+  <meta name="keywords" content="Service Details, Django, Web Developer, Simon Karuga">
 
   <!-- Favicons -->
   <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
@@ -18,7 +18,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Questrial:wght@400&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,65 +29,45 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: EasyFolio
-  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
-  * Updated: Feb 11 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="service-details-page">
 
+  <!-- Header -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">EasyFolio</h1>
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Simon Karuga</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
+        
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'resume' %}">Resume</a></li>
+            <li><a href="{% url 'portfoliodetails' %}">Portfolio</a></li>
+            <li><a href="{% url 'servicedetails' %}" class="active">Services</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
       </div>
 
     </div>
   </header>
+  <!-- End Header -->
+
+  <div id="threejs-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
 
   <main class="main">
 
@@ -96,170 +76,97 @@
       <div class="breadcrumbs">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}#services">Services</a></li>
             <li class="breadcrumb-item active current">Service Details</li>
           </ol>
         </nav>
       </div>
-
       <div class="title-wrapper">
         <h1>Service Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        <p>Explore the expertise and solutions I offer to help your business grow.</p>
       </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
     <!-- Service Details Section -->
     <section id="service-details" class="service-details section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="service-details-slider swiper init-swiper">
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": 1,
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide">
-                  <img src="{% static 'assets/img/services-1.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="{% static 'assets/img/services-2.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="{% static 'assets/img/services-3.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-
-            <div class="content mt-5">
-              <h3>Digital Marketing Solutions</h3>
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-5 align-items-center">
+          <div class="col-lg-6">
+            <img src="{% static 'assets/img/services-1.webp' %}" class="img-fluid rounded-4 mb-4" alt="Service Image">
+          </div>
+          <div class="col-lg-6">
+            <div class="service-description">
+              <h2>Custom Django Web Development</h2>
               <p>
-                Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka. Aut quiatem. Ut earum tempore quidem qui recusandae distinctio quo.
+                I specialize in building secure, scalable, and high-performance web applications using Django. From concept to deployment, I deliver tailored solutions that empower businesses to thrive in the digital world.
               </p>
-              <p>
-                Et officiis id est ad voluptates sint quia architecto aut soluta eum voluptatum rerum illo mara. Ut earum tempore quidem qui recusandae distinctio quo. Veniam maiores eos cumque distinctio.
-              </p>
-
-              <div class="features mt-4">
-                <div class="row gy-4">
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-box d-flex align-items-center">
-                      <i class="bi bi-check"></i>
-                      <h4>Search Engine Optimization</h4>
-                    </div>
-                  </div>
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-box d-flex align-items-center">
-                      <i class="bi bi-check"></i>
-                      <h4>Social Media Marketing</h4>
-                    </div>
-                  </div>
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-box d-flex align-items-center">
-                      <i class="bi bi-check"></i>
-                      <h4>Content Marketing Strategy</h4>
-                    </div>
-                  </div>
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-box d-flex align-items-center">
-                      <i class="bi bi-check"></i>
-                      <h4>Email Marketing Campaigns</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p class="mt-4">
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> End-to-end Django web application development</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> RESTful API design and integration</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Database modeling and optimization</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Secure authentication and user management</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Responsive frontend integration</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Deployment, maintenance, and support</li>
+              </ul>
+              <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Request This Service</a>
             </div>
           </div>
-
-          <div class="col-lg-4">
-            <div class="service-info">
-              <h4>Service Information</h4>
-              <div class="info-item">
-                <i class="bi bi-clock"></i>
-                <h5>Project Duration</h5>
-                <p>3-6 months</p>
-              </div>
-              <div class="info-item">
-                <i class="bi bi-person-check"></i>
-                <h5>Project Manager</h5>
-                <p>Sarah Johnson</p>
-              </div>
-              <div class="info-item">
-                <i class="bi bi-telephone"></i>
-                <h5>Contact Support</h5>
-                <p>+1 (555) 123-4567</p>
-              </div>
-            </div>
-
-            <div class="related-services mt-5">
-              <h4>Related Services</h4>
-              <div class="service-item">
-                <i class="bi bi-bar-chart"></i>
-                <h5><a href="#">Business Analytics</a></h5>
-                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-briefcase"></i>
-                <h5><a href="#">Business Consulting</a></h5>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-              </div>
-              <div class="service-item">
-                <i class="bi bi-graph-up"></i>
-                <h5><a href="#">Financial Planning</a></h5>
-                <p>Sed perspiciatis omnis iste natus error sit voluptatem doloremque</p>
-              </div>
-            </div>
-          </div>
-
         </div>
-
+        <div class="row gy-5 align-items-center mt-5">
+          <div class="col-lg-6 order-lg-2">
+            <img src="{% static 'assets/img/services-2.webp' %}" class="img-fluid rounded-4 mb-4" alt="Service Image">
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="service-description">
+              <h2>API & Backend Solutions</h2>
+              <p>
+                I design and implement robust APIs and backend systems for seamless integration with mobile apps, third-party services, and modern frontend frameworks.
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Django REST Framework expertise</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Secure token-based authentication</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Real-time data processing</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Scalable architecture for growth</li>
+              </ul>
+              <a href="{% url 'contact' %}" class="btn btn-outline-primary mt-3">Get a Quote</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+    <!-- /Service Details Section -->
 
-    </section><!-- /Service Details Section -->
+    <!-- Call to Action Section -->
+    <section class="cta-section section py-5 bg-light">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 class="mb-4">Ready to Elevate Your Business?</h2>
+        <p class="lead mb-4">Let's collaborate to build secure, scalable, and innovative web solutions tailored to your needs.</p>
+        <a href="{% url 'contact' %}" class="btn btn-lg btn-primary">Contact Me Now</a>
+      </div>
+    </section>
+    <!-- /Call to Action Section -->
 
   </main>
 
   <footer id="footer" class="footer">
-
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">EasyFolio</strong> <span>All Rights Reserved</span></p>
+        <p>2025© <span>Copyright</span> <strong class="px-1 sitename">Simon Karuga</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="#">Jades.com</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -267,17 +174,93 @@
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
   <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <script>
+    // Creative Three.js animated background for Service Details page
+    const container = document.getElementById('threejs-bg');
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setClearColor(0x000000, 0); // transparent
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Create a dynamic array of interconnected cubes
+    const cubes = [];
+    const numCubes = 25;
+    const colors = [0x4f46e5, 0x48c6ef, 0x22d3ee, 0xfbbf24];
+
+    // Create cubes
+    for (let i = 0; i < numCubes; i++) {
+      let geometry = new THREE.BoxGeometry(0.7 + Math.random() * 0.5, 0.7 + Math.random() * 0.5, 0.7 + Math.random() * 0.5);
+      let color = colors[i % colors.length];
+      let material = new THREE.MeshStandardMaterial({
+        color: color,
+        emissive: color,
+        emissiveIntensity: 0.6,
+        transparent: true,
+        opacity: 0.7
+      });
+      let cube = new THREE.Mesh(geometry, material);
+      cube.position.set(
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 12
+      );
+      cube.rotation.x = Math.random() * Math.PI;
+      cube.rotation.y = Math.random() * Math.PI;
+      cube.userData = {
+        speedX: (Math.random() - 0.5) * 0.002,
+        speedY: (Math.random() - 0.5) * 0.002,
+        speedZ: (Math.random() - 0.5) * 0.002,
+        rotationSpeedX: (Math.random() - 0.5) * 0.01,
+        rotationSpeedY: (Math.random() - 0.5) * 0.01
+      };
+      cubes.push(cube);
+      scene.add(cube);
+    }
+
+    // Lighting
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+    let pointLight = new THREE.PointLight(0x48c6ef, 0.9, 100);
+    pointLight.position.set(0, 0, 10);
+    scene.add(pointLight);
+
+    camera.position.z = 8;
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+      cubes.forEach(cube => {
+        cube.position.x += cube.userData.speedX;
+        cube.position.y += cube.userData.speedY;
+        cube.position.z += cube.userData.speedZ;
+        cube.rotation.x += cube.userData.rotationSpeedX;
+        cube.rotation.y += cube.userData.rotationSpeedY;
+
+        // Bounce off edges
+        if (cube.position.x > 7.5 || cube.position.x < -7.5) cube.userData.speedX *= -1;
+        if (cube.position.y > 5 || cube.position.y < -5) cube.userData.speedY *= -1;
+        if (cube.position.z > 6 || cube.position.z < -6) cube.userData.speedZ *= -1;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
 </body>
-
 </html>

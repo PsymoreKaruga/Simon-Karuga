@@ -1,0 +1,253 @@
+index.html<!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-5">
+          <div class="col-lg-6">
+            <div class="content" data-aos="fade-up" data-aos-delay="200">
+              <div class="section-category mb-3">Get In Touch</div>
+              <h2 class="display-5 mb-4"> Let's Connect </h2>
+              
+               <p class="lead mb-4">
+            I’m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out and let's make something great together.
+              </p>
+              <div class="contact-info mt-5">
+                <div class="info-item d-flex mb-3">
+                  <i class="bi bi-envelope-at me-3"></i>
+                  <span>qwertyuiop@gmail.com</span>
+                </div>
+
+                <div class="info-item d-flex mb-3">
+                  <i class="bi bi-telephone me-3"></i>
+                  <span>+1234567890</span>
+                </div>
+
+                <div class="info-item d-flex mb-4">
+                  <i class="bi bi-geo-alt me-3"></i>
+                  <span>location, Addess, Town</span>
+                </div>
+
+                <a href="https" class="map-link d-inline-flex align-items-center" target="_blank" rel="noopener">
+
+                  Open Map
+                  <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
+              <div class="card-body p-4 p-lg-5">
+
+                  {# Contact Form Start #}
+                  <form action="{% url 'contact' %}" method="post" id="contact-form">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>Error:</strong> Please correct the following:
+                                    {{ form.non_field_errors }}
+                                    {% for field in form %}
+                                        {{ field.errors }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                  </form>
+
+
+                  
+                  {# Contact Form End #}
+
+                
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+
+
+
+forms.pyfrom django import forms
+from django import forms
+
+# File: shayna/august/forms.py
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, label='Name')
+    email = forms.EmailField(label='Email')
+    subject = forms.CharField(max_length=100, label='Subject')
+    phone = forms.CharField(max_length=15, required=False, label='Phone')
+    message = forms.CharField(widget=forms.Textarea, label='Message')
+    
+
+
+
+# This form can be used in your views to handle contact form submissions.
+# Example usage in a view:
+
+
+contact.html{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Contact</title>
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <style>
+        /* Contact Form Card Styling */
+        .contact-form-container {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+        }
+
+        .contact-form-card h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            padding: 10px 12px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .loading, .error-message, .sent-message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .loading {
+            background-color: #f0f0f0;
+            color: #555;
+            text-align: center;
+        }
+
+        .error-message {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .sent-message {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-form-container">
+            <div class="contact-form-card">
+                <h1>Contact Me</h1>
+                <form method="post" action="{% url 'contact' %}" class="php-email-form">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="error-message">
+                            Error: Please correct the following errors:
+                            {{ form.non_field_errors }}
+                            {% for field in form %}
+                                {{ field.errors }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
+
+
+views.py 
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            phone = form.cleaned_data.get('phone', '')
+            message = form.cleaned_data['message']
+
+            full_message = f"From: {name}\nEmail: {email}\nPhone: {phone}\n\n{message}"
+
+            send_mail(
+                subject,
+                full_message,
+                email,
+                ['qwertyuiop@gmail.com'],  # Replace with your receiving email
+                fail_silently=False,
+
+            )
+            return redirect('success')  # Redirect to success page
+        else:
+            # If form is invalid, render with errors
+            return render(request, 'august/contact.html', {'form': form})
+    else:
+        form = ContactForm()
+        return render(request, 'august/contact.html', {'form': form})
+
+def success_view(request):
+    return render(request, 'august/success.html')

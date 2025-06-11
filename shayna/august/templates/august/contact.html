@@ -6,18 +6,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <title>Contact</title>
     <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <style>
+        /* Contact Form Card Styling */
+        .contact-form-container {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+        }
+
+        .contact-form-card h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            padding: 10px 12px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .loading, .error-message, .sent-message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .loading {
+            background-color: #f0f0f0;
+            color: #555;
+            text-align: center;
+        }
+
+        .error-message {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .sent-message {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+
+        /* Three.js Background Styling */
+        #threejs-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
+    <div id="threejs-bg"></div>
     <div class="container">
-        <h1>Contact Us</h1>
-        <form method="post" action="{% url 'contact' %}">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+        <div class="contact-form-container">
+            <div class="contact-form-card">
+                <h1>Contact Me</h1>
+                <form method="post" action="{% url 'contact' %}" class="php-email-form">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="error-message">
+                            Error: Please correct the following errors:
+                            {{ form.non_field_errors }}
+                            {% for field in form %}
+                                {{ field.errors }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
     </div>
+
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+    <script>
+      // Creative Three.js animated background for Contact page
+      const container = document.getElementById('threejs-bg');
+      let scene = new THREE.Scene();
+      let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+      let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setClearColor(0x000000, 0); // transparent
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      container.appendChild(renderer.domElement);
+
+      // Responsive resize
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth/window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      // Create floating, glowing rings and orbs
+      const objects = [];
+      const colors = [0x007bff, 0x48c6ef, 0x4f46e5, 0x22d3ee, 0xfbbf24, 0xf43f5e];
+      for (let i = 0; i < 10; i++) {
+        // Glowing ring
+        let ringGeom = new THREE.TorusGeometry(1 + Math.random(), 0.08 + Math.random()*0.08, 16, 100);
+        let ringMat = new THREE.MeshStandardMaterial({
+          color: colors[i % colors.length],
+          emissive: colors[i % colors.length],
+          emissiveIntensity: 0.6,
+          transparent: true,
+          opacity: 0.6
+        });
+        let ring = new THREE.Mesh(ringGeom, ringMat);
+        ring.position.set(
+          (Math.random() - 0.5) * 10,
+          (Math.random() - 0.5) * 7,
+          (Math.random() - 0.5) * 8
+        );
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        ring.userData = { speed: 0.003 + Math.random() * 0.008, axis: Math.random() > 0.5 ? 'x' : 'y' };
+        objects.push(ring);
+        scene.add(ring);
+
+        // Glowing orb
+        let orbGeom = new THREE.SphereGeometry(0.25 + Math.random()*0.25, 24, 24);
+        let orbMat = new THREE.MeshStandardMaterial({
+          color: colors[(i+2) % colors.length],
+          emissive: colors[(i+2) % colors.length],
+          emissiveIntensity: 0.8,
+          transparent: true,
+          opacity: 0.7
+        });
+        let orb = new THREE.Mesh(orbGeom, orbMat);
+        orb.position.set(
+          ring.position.x + (Math.random() - 0.5) * 2,
+          ring.position.y + (Math.random() - 0.5) * 2,
+          ring.position.z + (Math.random() - 0.5) * 2
+        );
+        orb.userData = { speed: 0.004 + Math.random() * 0.01, phase: Math.random() * Math.PI * 2 };
+        objects.push(orb);
+        scene.add(orb);
+      }
+
+      // Lighting
+      let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      let pointLight = new THREE.PointLight(0x48c6ef, 1.2, 100);
+      pointLight.position.set(0, 0, 10);
+      scene.add(pointLight);
+
+      camera.position.z = 8;
+
+      // Animate
+      function animate() {
+        requestAnimationFrame(animate);
+        let t = performance.now() * 0.001;
+        objects.forEach(obj => {
+          if (obj.geometry.type === "TorusGeometry") {
+            obj.rotation[obj.userData.axis] += obj.userData.speed;
+          } else {
+            obj.position.y += Math.sin(t * obj.userData.speed + obj.userData.phase) * 0.01;
+            obj.position.x += Math.cos(t * obj.userData.speed + obj.userData.phase) * 0.008;
+          }
+        });
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
 </body>
 </html>

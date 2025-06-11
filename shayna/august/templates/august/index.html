@@ -1,5 +1,5 @@
-{% load static %}
-{% load crispy_forms_tags %}
+{% load static %} 
+{% load crispy_forms_tags %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,13 @@
     
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Simon Karuga Web Developer</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+  
 
   <!-- Favicons -->
   <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
@@ -42,6 +46,8 @@
 
 <body class="index-page">
 
+<div id="threejs-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -53,30 +59,13 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+          <li><a href="{% url 'index' %}" class="active">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'resume' %}">Resume</a></li>
+          <li><a href="{% url 'portfoliodetails' %}" class="nav-link scrollto">Portfolio</a></li> 
+          <li><a href="{% url 'servicedetails' %}">Services</a></li>
+          
+          <li><a href="{% url 'contact' %}" class="nav-link scrollto">Contact</a></li> </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
@@ -105,8 +94,8 @@
             <p class="lead">Transforming visionary concepts into sophisticated, user-centric digital experiences through expert design and cutting-edge development.</p>
             <p class="lead">Partner with us to elevate your digital presence and achieve your business goals.</p>
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-              <a href="#portfolio" class="btn btn-primary">View My Work</a>
-              <a href="#contact" class="btn btn-outline">Let's Connect</a>
+              <a href="{% url 'portfoliodetails' %}" class="btn btn-primary">View My Work</a>
+              <a href="{% url 'contact' %}" class="btn btn-outline">Let's Connect</a>
             </div>
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
               <div class="stat-item">
@@ -922,7 +911,7 @@
       <div class="col-lg-4 mb-5 mb-lg-0">
         <h2 class="fw-bold mb-4 services-title">Building Modern Web Solutions That Work</h2>
         <p class="mb-4">With over 3 years of experience, I deliver clean, efficient, and scalable code for businesses and startups—helping them grow through tailored web solutions built with Django and modern frontend tools.</p>
-        <a href="#contact" class="btn btn-outline-primary">Let's Work Together</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline-primary">Let's Work Together</a>
       </div>
       <div class="col-lg-8">
         <div class="row g-4">
@@ -1048,16 +1037,25 @@
             <div class="contact-form card" data-aos="fade-up" data-aos-delay="300">
               <div class="card-body p-4 p-lg-5">
 
-                <form action="{% url 'contact' %}" method="post" class="php-email-form">
-                  {% csrf_token %}
-                  {{ form|crispy }}
-                    <div class="col-12 text-center">
-                        <div class="loading">Loading</div>
-                             <div class="error-message"></div>
-                                     <div class="sent-message">Your message has been sent. Thank you!</div>
-                                          <button type="submit" class="btn btn-submit w-100">Submit Message</button>
-                                        </div>
-               </form>
+                  {# Contact Form Start #}
+                  <form action="{% url 'contact' %}" method="post" id="contact-form">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>Error:</strong> Please correct the following:
+                                    {{ form.non_field_errors }}
+                                    {% for field in form %}
+                                        {{ field.errors }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                  </form>
+
+
+                  
+                  {# Contact Form End #}
 
                 
 
@@ -1093,7 +1091,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">Jades.com</a>
+        Designed by <a href="#">Jades.com</a>
       </div>
     </div>
 
@@ -1115,6 +1113,100 @@
 
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+<script>
+  // Creative Three.js animated background for index.html
+  const container = document.getElementById('threejs-bg');
+  let scene = new THREE.Scene();
+  let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setClearColor(0x000000, 0); // transparent
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  container.appendChild(renderer.domElement);
+
+  // Responsive resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Create a dynamic, interconnected network of lines and nodes
+  const nodes = [];
+  const lines = [];
+  const numNodes = 40;
+  const colors = [0x4f46e5, 0x48c6ef, 0x22d3ee, 0xfbbf24];
+
+  // Create nodes
+  for (let i = 0; i < numNodes; i++) {
+    let geometry = new THREE.SphereGeometry(0.15 + Math.random() * 0.15, 16, 16);
+    let color = colors[i % colors.length];
+    let material = new THREE.MeshStandardMaterial({
+      color: color,
+      emissive: color,
+      emissiveIntensity: 0.7,
+      transparent: true,
+      opacity: 0.8
+    });
+    let node = new THREE.Mesh(geometry, material);
+    node.position.set(
+      (Math.random() - 0.5) * 20,
+      (Math.random() - 0.5) * 15,
+      (Math.random() - 0.5) * 12
+    );
+    node.userData = {
+      speed: 0.002 + Math.random() * 0.004,
+      phase: Math.random() * Math.PI * 2
+    };
+    nodes.push(node);
+    scene.add(node);
+  }
+
+  // Connect nodes with lines
+  for (let i = 0; i < numNodes; i++) {
+    for (let j = i + 1; j < numNodes; j++) {
+      if (Math.random() > 0.7) { // Adjust connection density
+        let material = new THREE.LineBasicMaterial({
+          color: colors[Math.floor(Math.random() * colors.length)],
+          transparent: true,
+          opacity: 0.3
+        });
+        let geometry = new THREE.BufferGeometry().setFromPoints([nodes[i].position, nodes[j].position]);
+        let line = new THREE.Line(geometry, material);
+        lines.push(line);
+        scene.add(line);
+      }
+    }
+  }
+
+  // Lighting
+  let ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+  let pointLight = new THREE.PointLight(0x48c6ef, 0.9, 100);
+  pointLight.position.set(0, 0, 10);
+  scene.add(pointLight);
+
+  camera.position.z = 8;
+
+  // Animate
+  function animate() {
+    requestAnimationFrame(animate);
+    let t = performance.now() * 0.001;
+    nodes.forEach(node => {
+      node.position.y += Math.sin(t * node.userData.speed + node.userData.phase) * 0.005;
+      node.position.x += Math.cos(t * node.userData.speed + node.userData.phase) * 0.004;
+    });
+
+    // Update line positions
+    lines.forEach(line => {
+      line.geometry.setFromPoints([line.geometry.attributes.position.array.slice(0,3), line.geometry.attributes.position.array.slice(3,6)]);
+      line.geometry.attributes.position.needsUpdate = true;
+    });
+
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>
  
 
 </body>

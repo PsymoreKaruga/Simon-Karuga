@@ -1572,6 +1572,7 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+
 .contact .section-category {
   font-family: var(--heading-font);
   font-weight: 600;
@@ -1660,6 +1661,8 @@ section,
 .contact .contact-form .btn-submit:active {
   transform: translateY(0);
 }
+
+Contact Section */
 
 /*--------------------------------------------------------------
 # Portfolio Details Section
@@ -1952,9 +1955,302 @@ section,
   }
 }
 
+/* Professional, modern, and attractive contact form CSS */
+/* Place this in your main.css or inside a <style> tag in your template */
+
+.contact-form.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(60, 72, 88, 0.10);
+    padding: 2.5rem 2rem;
+    border: none;
+}
+
+.contact-form .card-body {
+    padding: 0;
+}
+
+.contact-form h1,
+.contact-form h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-form .form-group,
+.contact-form .form-row {
+    margin-bottom: 1.2rem;
+}
+
+.contact-form .form-control {
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    padding: 12px 14px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #f8fafc;
+}
+
+.contact-form .form-control:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.10);
+    background: #fff;
+}
+
+.contact-form label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.3rem;
+}
+
+.contact-form .btn-submit {
+    background: linear-gradient(90deg, #4f46e5 0%, #48c6ef 100%);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+
+.contact-form .btn-submit:hover,
+.contact-form .btn-submit:focus {
+    background: linear-gradient(90deg, #48c6ef 0%, #4f46e5 100%);
+    color: #fff;
+}
+
+.contact-form .invalid-feedback,
+.contact-form .text-danger {
+    /*color: #e74c3c; */
+    font-size: 0.97rem;
+    margin-top: 0.2rem;
+}
+
+.contact-form .loading,
+.contact-form .error-message,
+.contact-form .sent-message {
+    display: none;
+    margin-top: 1rem;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.contact-form .loading {
+    background: #f0f4ff;
+    color: #4f46e5;
+}
+
+.contact-form .error-message {
+    background: #ffebee;
+    /* color: #d32f2f; */
+}
+
+.contact-form .sent-message {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+
+
+
 }
+
+/* Add this to your styles.css or inside a <style> tag in resume.html for a modern, professional look */
+
+/* Resume Section */
+.resume-page .resume.section {
+    background: #f8fafc;
+    padding: 60px 0 40px 0;
+}
+
+.resume-page .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.resume-page .section-title p {
+    color: #374151;
+    font-size: 1.15rem;
+    margin-bottom: 0;
+}
+
+.resume-page .title-shape svg {
+    width: 120px;
+    height: 20px;
+    color: #4f46e5;
+    margin-bottom: 1.5rem;
+}
+
+.resume-page .resume-block {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(60, 72, 88, 0.10);
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resume-page .resume-block h3 {
+    color: #4f46e5;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.resume-page .timeline {
+    border-left: 3px solid #4f46e5;
+    margin-left: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.resume-page .timeline-item {
+    position: relative;
+    margin-bottom: 2.2rem;
+}
+
+.resume-page .timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.resume-page .timeline-dot {
+    position: absolute;
+    left: -1.7rem;
+    top: 0.3rem;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 3px solid #4f46e5;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.resume-page .company {
+    font-weight: 600;
+    color: #22223b;
+    font-size: 1.1rem;
+}
+
+.resume-page .period {
+    font-size: 0.98rem;
+    color: #6c757d;
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+.resume-page .position {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #4f46e5;
+    margin-bottom: 0.3rem;
+}
+
+.resume-page .timeline-item .description,
+.resume-page .timeline-item ul {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.resume-page .timeline-item ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.resume-page .skills.section .skill-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(60, 72, 88, 0.08);
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.resume-page .skills.section .skill-box h3 {
+    color: #4f46e5;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+}
+
+.resume-page .skills.section .progress {
+    height: 8px;
+    background: #e0e7ff;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+.resume-page .skills.section .progress-bar {
+    background: linear-gradient(90deg, #4f46e5 0%, #48c6ef 100%);
+    border-radius: 6px;
+}
+
+.resume-page .list-unstyled li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.resume-page .list-unstyled i {
+    color: #4f46e5;
+    margin-right: 0.5rem;
+}
+
+.resume-page .cta-section {
+    background: linear-gradient(90deg, #4f46e5 0%, #48c6ef 100%);
+    color: #fff;
+    border-radius: 16px;
+    margin: 40px 0 0 0;
+    padding: 2.5rem 1rem;
+}
+
+.resume-page .cta-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.resume-page .cta-section .btn-primary {
+    background: #fff;
+    color: #4f46e5;
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.resume-page .cta-section .btn-primary:hover {
+    background: #4f46e5;
+    color: #fff;
+}
+
+@media (max-width: 991px) {
+    .resume-page .resume-block,
+    .resume-page .skills.section .skill-box {
+        padding: 1.2rem 0.7rem;
+    }
+    .resume-page .cta-section {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
+
+
+
+
+

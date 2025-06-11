@@ -1,0 +1,593 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Resume - Simon Karuga</title>
+  <meta name="description" content="Professional resume of Simon Karuga, Python Django Web Developer.">
+  <meta name="keywords" content="Resume, CV, Django, Web Developer, Simon Karuga">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!-- <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet"> -->
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <style>
+    /* General Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    /* Resume Section Styles */
+    .resume.section {
+      padding: 80px 0;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      text-transform: capitalize;
+    }
+
+    .title-shape {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .title-shape svg {
+      width: 150px;
+      height: 20px;
+      stroke: #007bff;
+      stroke-width: 3;
+      transition: stroke 0.3s ease;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Timeline Styles */
+    .resume-block {
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .resume-block:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .resume-block h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .resume-block h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #007bff;
+      border-radius: 2px;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #007bff;
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 30px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border: 3px solid #007bff;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .timeline-item:hover::before {
+      background: #007bff;
+    }
+
+    .company {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    }
+
+    .period {
+      display: block;
+      font-size: 0.9rem;
+      color: #007bff;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .position {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p strong {
+      color: #1a1a1a;
+    }
+
+    /* Skills List */
+    .list-unstyled {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list-unstyled li {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .list-unstyled li i {
+      margin-right: 10px;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+      .resume.section {
+        padding: 60px 0;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .resume-block {
+        padding: 20px;
+      }
+
+      .timeline::before {
+        left: 8px;
+      }
+
+      .timeline-item {
+        padding-left: 25px;
+      }
+
+      .timeline-item::before {
+        left: -8px;
+        top: 8px;
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .col-lg-6 {
+        margin-bottom: 30px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .section-title p {
+        font-size: 1rem;
+      }
+
+      .resume-block h3 {
+        font-size: 1.5rem;
+      }
+
+      .company {
+        font-size: 1.2rem;
+      }
+
+      .position {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* AOS Animation Overrides */
+    [data-aos="fade-up"] {
+      transition-duration: 0.8s;
+    }
+
+    [data-aos="fade-up"][data-aos-delay="100"] {
+      transition-delay: 0.1s;
+    }
+
+    /* Hover Effects */
+    .resume-block:hover .company-block:hover .position,
+    .resume:hover .position {
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+
+    /* Accessibility Enhancements */
+    :focus {
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body class="resume-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Simon Karuga</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'resume' %}" class="active">Resume</a></li>
+          <li><a href="{% url 'portfoliodetails' %}">Portfolio</a></li>
+          <li><a href="{% url 'servicedetails' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
+      </div>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <main class="main">
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+        <p>
+          Explore my professional journey as a Python Django Web Developer, dedicated to building secure, scalable, and high-performance web solutions.
+        </p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="resume-block mb-5">
+              <h3 class="mb-3">Work Experience</h3>
+              <div class="timeline">
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Jadespay Payment Gateway</h4>
+                  <span class="period">June 2024 – Present</span>
+                  <h5 class="position">Project Lead</h5>
+                  <p>Leading the development of a secure, scalable payment gateway, integrating advanced features and ensuring seamless transactions for clients.</p>
+                </div>
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Awasam Online Experts</h4>
+                  <span class="period">2023</span>
+                  <h5 class="position">Senior Graphic Design Specialist</h5>
+                  <p>Transformed visual storytelling for clients by crafting compelling designs that elevate brand identity and engagement.</p>
+                  <p><strong>Technologies:</strong> Adobe Creative Suite, Sketch, InVision, UXPin, HTML, CSS, JavaScript</p>
+                </div>
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Peli and Sons Building and Construction Ltd</h4>
+                  <span class="period">2022-2023</span>
+                  <h5 class="position">Social Media Manager</h5>
+                  <p>Amplified brand visibility and engagement through strategic social media campaigns, driving audience growth and fostering meaningful connections.</p>
+                </div>
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Jades Motors</h4>
+                  <span class="period">2022 – Present</span>
+                  <h5 class="position">Marketing and Brand Ambassador</h5>
+                  <p>Elevated brand presence in the automotive sector by designing innovative marketing strategies and representing the company as a charismatic ambassador.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="resume-block mb-5">
+              <h3 class="mb-3">Education</h3>
+              <div class="timeline">
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Flatiron School</h4>
+                  <span class="period">2023-2024</span>
+                  <h5 class="position">UX/UI Product Design</h5>
+                  <p>Mastered user-centered design, blending aesthetics with functionality to create intuitive, visually stunning digital experiences.</p>
+                </div>
+                <div class="timeline-item mb-4">
+                  <h4 class="company">freeCodeCamp</h4>
+                  <span class="period">2022 - 2024</span>
+                  <h5 class="position">Python & Django Development</h5>
+                  <p>Developed advanced proficiency in Python and Django, building robust, scalable web applications with a focus on clean code and dynamic functionality.</p>
+                </div>
+                <div class="timeline-item mb-4">
+                  <h4 class="company">Kirinyaga University</h4>
+                  <span class="period">2020-2024</span>
+                  <h5 class="position">Bachelor of Business Information Technology &amp; Graphic Design</h5>
+                  <p>Acquired a versatile skill set at the intersection of technology and creativity, mastering business IT strategies alongside graphic design principles.</p>
+                </div>
+              </div>
+            </div>
+            <div class="resume-block">
+              <h3 class="mb-3">Skills</h3>
+              <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Python & Django</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> HTML5, CSS3, JavaScript</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> PostgreSQL & MongoDB</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> RESTful API Development</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Graphic Design (Photoshop, Canva)</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> UX/UI Design</li>
+                <li><i class="bi bi-check-circle-fill text-primary"></i> Deployment & Optimization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /Resume Section -->
+
+    <!-- Call to Action Section -->
+    <section class="cta-section section py-5 bg-light">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 class="mb-4">Ready to Work Together?</h2>
+        <p class="lead mb-4">Let's collaborate to build secure, scalable, and innovative web solutions tailored to your needs.</p>
+        <a href="{% url 'contact' %}" class="btn btn-lg btn-primary">Contact Me Now</a>
+      </div>
+    </section>
+    <!-- /Call to Action Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>2025© <span>Copyright</span> <strong class="px-1 sitename">Simon Karuga</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
+      </div>
+      <div class="credits">
+        Designed by <a href="#">Jades.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- Add this just after <body> in your resume.html -->
+  <div id="threejs-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
+
+  <!-- Place this script just before </body> in your resume.html -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <script>
+    // Three.js animated background for Resume page: floating glassy hexagons and soft particles
+    const container = document.getElementById('threejs-bg');
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setClearColor(0x000000, 0); // transparent
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Create floating glassy hexagons
+    const hexagons = [];
+    const hexColors = [0x4f46e5, 0x48c6ef, 0x22d3ee, 0xfbbf24, 0xf43f5e];
+    for (let i = 0; i < 18; i++) {
+      let shape = new THREE.Shape();
+      for (let j = 0; j < 6; j++) {
+        let angle = (j / 6) * Math.PI * 2;
+        let x = Math.cos(angle) * 1.1;
+        let y = Math.sin(angle) * 1.1;
+        if (j === 0) shape.moveTo(x, y);
+        else shape.lineTo(x, y);
+      }
+      shape.closePath();
+      let geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.18, bevelEnabled: true, bevelThickness: 0.08, bevelSize: 0.08, bevelSegments: 2 });
+      let color = hexColors[i % hexColors.length];
+      let material = new THREE.MeshPhysicalMaterial({
+        color: color,
+        metalness: 0.2,
+        roughness: 0.1,
+        transmission: 0.7,
+        transparent: true,
+        opacity: 0.7,
+        ior: 1.3,
+        thickness: 0.5,
+        clearcoat: 0.6,
+        clearcoatRoughness: 0.2,
+        emissive: color,
+        emissiveIntensity: 0.12
+      });
+      let hex = new THREE.Mesh(geometry, material);
+      hex.position.set(
+        (Math.random() - 0.5) * 16,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10
+      );
+      hex.rotation.x = Math.random() * Math.PI;
+      hex.rotation.y = Math.random() * Math.PI;
+      hex.userData = {
+        speed: 0.003 + Math.random() * 0.006,
+        phase: Math.random() * Math.PI * 2,
+        rotSpeed: 0.002 + Math.random() * 0.004
+      };
+      hexagons.push(hex);
+      scene.add(hex);
+    }
+
+    // Add soft glowing particles
+    const particles = [];
+    const particleGeometry = new THREE.SphereGeometry(0.12, 12, 12);
+    for (let i = 0; i < 30; i++) {
+      let color = hexColors[Math.floor(Math.random() * hexColors.length)];
+      let material = new THREE.MeshStandardMaterial({
+        color: color,
+        emissive: color,
+        emissiveIntensity: 0.7,
+        transparent: true,
+        opacity: 0.5
+      });
+      let particle = new THREE.Mesh(particleGeometry, material);
+      particle.position.set(
+        (Math.random() - 0.5) * 18,
+        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 12
+      );
+      particle.userData = {
+        speed: 0.004 + Math.random() * 0.008,
+        phase: Math.random() * Math.PI * 2
+      };
+      particles.push(particle);
+      scene.add(particle);
+    }
+
+    // Lighting
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+    scene.add(ambientLight);
+    let pointLight = new THREE.PointLight(0x48c6ef, 1.1, 100);
+    pointLight.position.set(0, 0, 12);
+    scene.add(pointLight);
+
+    camera.position.z = 10;
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+      let t = performance.now() * 0.001;
+      hexagons.forEach((hex, i) => {
+        hex.position.y += Math.sin(t * hex.userData.speed + hex.userData.phase) * 0.012;
+        hex.position.x += Math.cos(t * hex.userData.speed + hex.userData.phase) * 0.008;
+        hex.rotation.y += hex.userData.rotSpeed;
+        hex.rotation.x += hex.userData.rotSpeed * 0.7;
+      });
+      particles.forEach((p, i) => {
+        p.position.y += Math.sin(t * p.userData.speed + p.userData.phase) * 0.01;
+        p.position.x += Math.cos(t * p.userData.speed + p.userData.phase) * 0.007;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>

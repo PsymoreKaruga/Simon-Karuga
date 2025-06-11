@@ -1,23 +1,15 @@
-
-
 {% load static %}
+{% load crispy_forms_tags %}
 
-
-
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - Simon Karuga </title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Portfolio Details - Simon Karuga</title>
+  <meta name="description" content="Detailed view of Simon Karuga's portfolio project, including images, project info, and testimonials.">
+  <meta name="keywords" content="Portfolio, Django, Web Developer, Simon Karuga, Project Details">
 
   <!-- Favicons -->
   <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
@@ -26,7 +18,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Questrial:wght@400&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -37,65 +29,47 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: EasyFolio
-  * Template URL: https://bootstrapmade.com/easyfolio-bootstrap-portfolio-template/
-  * Updated: Feb 11 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="portfolio-details-page">
 
+  <!-- Header -->
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">EasyFolio</h1>
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Simon Karuga</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'resume' %}" >Resume</a></li>
+          <li><a href="{% url 'portfoliodetails' %}" class="active">Portfolio</a></li>
+          <li><a href="{% url 'servicedetails' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
       </div>
 
     </div>
   </header>
+  <!-- End Header -->
+
+  <!-- Add this just after <body> in your portfoliodetails.html -->
+  <div id="threejs-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></div>
 
   <main class="main">
 
@@ -104,112 +78,86 @@
       <div class="breadcrumbs">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Category</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="bi bi-house"></i> Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'index' %}#portfolio">Portfolio</a></li>
             <li class="breadcrumb-item active current">Portfolio Details</li>
           </ol>
         </nav>
       </div>
-
       <div class="title-wrapper">
         <h1>Portfolio Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        <p>Discover the story, process, and results behind this featured project.</p>
       </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-
       <div class="container" data-aos="fade-up">
-
         <div class="row gy-4 g-lg-5">
           <div class="col-lg-6">
-            <img src="{% static 'assets/img/portfolio/app-1.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/product-1.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/books-1.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/books-2.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/product-2.jpg' %}" class="img-fluid mb-4" alt="">
-            <img src="{% static 'assets/img/portfolio/branding-2.jpg' %}" class="img-fluid mb-4" alt="">
+            <div class="portfolio-gallery">
+              <img src="{% static 'assets/img/portfolio/app-1.jpg' %}" class="img-fluid mb-4 rounded-4" alt="Project Image 1">
+              <img src="{% static 'assets/img/portfolio/product-1.jpg' %}" class="img-fluid mb-4 rounded-4" alt="Project Image 2">
+              <img src="{% static 'assets/img/portfolio/branding-1.jpg' %}" class="img-fluid mb-4 rounded-4" alt="Project Image 3">
+            </div>
           </div>
-
           <div class="col-lg-6">
-
             <div class="position-sticky" style="top: 40px">
               <div class="portfolio-description">
-                <h2>This is an example of portfolio details</h2>
+                <h2>Modern Dashboard Interface</h2>
                 <p>
-                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                  This project showcases a sleek, responsive dashboard built with Django, optimizing user workflows and data visualization. The solution integrates advanced analytics, real-time updates, and a user-friendly interface to empower business decision-making.
                 </p>
+                <ul>
+                  <li><strong>Category:</strong> Web Design</li>
+                  <li><strong>Client:</strong> ASU Company</li>
+                  <li><strong>Project Date:</strong> 01 March, 2020</li>
+                   {# <li><strong>Project URL:</strong> <a href="#">www.example.com</a></li> #} 
+                    {# <li><strong>Project URL:</strong> <a href="#">www.example.com</a></li> #}
+                </ul>
+                <a href="#" class="btn btn-primary mt-3">Visit Website</a>
+              </div>
+              <div class="testimonial-item mt-5">
                 <p>
-                  Amet consequatur qui dolore veniam voluptatem voluptatem sit. Non aspernatur atque natus ut cum nam et. Praesentium error dolores rerum minus sequi quia veritatis eum. Eos et doloribus doloremque nesciunt molestiae laboriosam.
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Simon delivered a robust and visually stunning dashboard that transformed our business operations. His expertise in Django and attention to detail made the project a success.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
                 </p>
-
-                <div class="testimonial-item">
-                  <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                  </p>
+                <div class="d-flex align-items-center mt-3">
+                  <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img rounded-circle me-3" alt="Testimonial">
                   <div>
-                    <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
                     <h3>Sara Wilsson</h3>
                     <h4>Designer</h4>
                   </div>
                 </div>
-
-                <p>
-                  Impedit ipsum quae et aliquid doloribus et voluptatem quasi. Perspiciatis occaecati earum et magnam animi. Quibusdam non qui ea vitae suscipit vitae sunt. Repudiandae incidunt cumque minus deserunt assumenda tempore. Delectus voluptas necessitatibus est.
-                </p>
-
-                <p>
-                  Sunt voluptatum sapiente facilis quo odio aut ipsum repellat debitis. Molestiae et autem libero. Explicabo et quod necessitatibus similique quis dolor eum. Numquam eaque praesentium rem et qui nesciunt.
-                </p>
-
-              </div>
-
-              <div class="portfolio-info mt-5">
-                <h3>Project information</h3>
-                <ul>
-                  <li><strong>Category</strong> Web design</li>
-                  <li><strong>Client</strong> ASU Company</li>
-                  <li><strong>Project date</strong> 01 March, 2020</li>
-                  <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                  <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
-                </ul>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
-
-    </section><!-- /Portfolio Details Section -->
+    </section>
+    <!-- /Portfolio Details Section -->
 
   </main>
 
   <footer id="footer" class="footer">
-
     <div class="container">
       <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">EasyFolio</strong> <span>All Rights Reserved</span></p>
+        <p>2025© <span>Copyright</span> <strong class="px-1 sitename">Simon Karuga</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://x.com/home" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.facebook.com/xymoh.karuga" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/simon-karuga-760929352?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bbc4H2tsZQ0WArr3OcEq6Dg%3D%3D" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/PsymoreKaruga" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://discord.com/channels/@me" class="discord"><i class="bi bi-discord"></i></a>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="#">Jades.com</a>
       </div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
@@ -224,10 +172,116 @@
   <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <script>
+    // Dark, attractive, and colorful Three.js background for Portfolio Details
+    const container = document.getElementById('threejs-bg');
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setClearColor(0x000000, 0); // transparent
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Create floating, glowing colorful triangles
+    const triangles = [];
+    const triangleColors = [0x4f46e5, 0x48c6ef, 0xf43f5e, 0xfbbf24, 0x22d3ee, 0x10b981];
+    for (let i = 0; i < 22; i++) {
+      let geometry = new THREE.BufferGeometry();
+      const vertices = new Float32Array([
+        (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2,
+        (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2,
+        (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2,
+      ]);
+      geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+      let color = triangleColors[i % triangleColors.length];
+      let material = new THREE.MeshStandardMaterial({
+        color: color,
+        emissive: color,
+        emissiveIntensity: 0.8,
+        transparent: true,
+        opacity: 0.7,
+        side: THREE.DoubleSide,
+        flatShading: true
+      });
+      let triangle = new THREE.Mesh(geometry, material);
+      triangle.position.set(
+        (Math.random() - 0.5) * 18,
+        (Math.random() - 0.5) * 12,
+        (Math.random() - 0.5) * 14
+      );
+      triangle.rotation.x = Math.random() * Math.PI;
+      triangle.rotation.y = Math.random() * Math.PI;
+      triangle.userData = {
+        speed: 0.002 + Math.random() * 0.006,
+        phase: Math.random() * Math.PI * 2,
+        rotSpeed: 0.002 + Math.random() * 0.008
+      };
+      triangles.push(triangle);
+      scene.add(triangle);
+    }
+
+    // Add glowing orbs for extra color
+    const orbs = [];
+    for (let i = 0; i < 12; i++) {
+      let color = triangleColors[Math.floor(Math.random() * triangleColors.length)];
+      let geometry = new THREE.SphereGeometry(0.25 + Math.random() * 0.18, 24, 24);
+      let material = new THREE.MeshStandardMaterial({
+        color: color,
+        emissive: color,
+        emissiveIntensity: 0.9,
+        transparent: true,
+        opacity: 0.6
+      });
+      let orb = new THREE.Mesh(geometry, material);
+      orb.position.set(
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 14,
+        (Math.random() - 0.5) * 16
+      );
+      orb.userData = {
+        speed: 0.003 + Math.random() * 0.007,
+        phase: Math.random() * Math.PI * 2
+      };
+      orbs.push(orb);
+      scene.add(orb);
+    }
+
+    // Lighting
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
+    scene.add(ambientLight);
+    let pointLight = new THREE.PointLight(0x48c6ef, 1.2, 100);
+    pointLight.position.set(0, 0, 12);
+    scene.add(pointLight);
+
+    camera.position.z = 10;
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+      let t = performance.now() * 0.001;
+      triangles.forEach((tri, i) => {
+        tri.position.y += Math.sin(t * tri.userData.speed + tri.userData.phase) * 0.012;
+        tri.position.x += Math.cos(t * tri.userData.speed + tri.userData.phase) * 0.008;
+        tri.rotation.y += tri.userData.rotSpeed;
+        tri.rotation.x += tri.userData.rotSpeed * 0.7;
+      });
+      orbs.forEach((orb, i) => {
+        orb.position.y += Math.sin(t * orb.userData.speed + orb.userData.phase) * 0.01;
+        orb.position.x += Math.cos(t * orb.userData.speed + orb.userData.phase) * 0.007;
+      });
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
 </body>
-
 </html>
