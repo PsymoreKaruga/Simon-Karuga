@@ -1,0 +1,1 @@
+web: gunicorn shayna.wsgi --log-file -
